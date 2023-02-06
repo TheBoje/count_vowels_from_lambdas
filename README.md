@@ -35,6 +35,10 @@ Id rather jump from a cliff than debug shit again
 14
 ```
 
+## How this works ?
+
+This program relies on Thread, for each character provided, a thread is created to handle it. Then for each created thread, 256 threads are created, each one responsible for an ASCII character. Each sub-thread then checks if its ASCII character and the "to check" character are the same, and if so, check if the character is a vowel. Then the thread completes a reduce function. This program creates $n * 256$ threads, as $n$ the length of the input.
+
 ## License
 
 My submission for the third edition of the Bad code from "La click" is distributed under the DWTFYW License, see [LICENSE](LICENSE) for more details.
