@@ -2,7 +2,7 @@
 
 ## Context
 
-Create a program to display the number of vowels contained in a string. Programming language is free of choise, efficiency and readability are not required.
+Create a program to display the number of vowels contained in a string. Programming language is free of choice, efficiency and readability are not required.
 
 ## Build from source
 
