@@ -17,13 +17,13 @@ make
 Once the project is built, run with:
 
 ```bash
-./aeif "<your sentense>"
+./aeif "<your sentence>"
 ```
 
 or 
 
 ```bash
-make run ARGS="<your sentense>"
+make run ARGS="<your sentence>"
 ```
 
 For example:
