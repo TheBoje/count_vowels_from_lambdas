@@ -20,13 +20,6 @@ int count = 0;
 int countCompute = 0;
 int countComputeCompute = 0;
 
-std::string fill(std::string s, int c) {
-  if (s.size() < c) {
-    return std::string(c - s.size(), ' ') + s;
-  }
-  return s;
-}
-
 int main(int argc, char** argv){
   std::string input;
   for (int i = 1; i < argc; i++) {
@@ -73,7 +66,7 @@ int main(int argc, char** argv){
 
           if (res2) 
             (*res)++;
-          std::cout << ((res2 ? "\x1B[32m" : "\x1B[31m") + std::string("\r[") + ((std::to_string(countComputeCompute).size() < 3) ? std::string(3 - std::to_string(countComputeCompute).size(), ' ') + std::to_string(countComputeCompute) : std::to_string(countComputeCompute)) + "/255|" + ((std::to_string(countCompute).size() < 3) ? std::string(3 - std::to_string(countCompute).size(), ' ') + std::to_string(countCompute) : std::to_string(countCompute)) + "/" + std::to_string(input_size - 1) + "] Computing " + std::string(1, c) + " ... done! (" + (res2 ? "true " : "false") + ")\x1B[0m") << std::endl;
+          std::cout << ((res2 ? "\x1B[32m" : "\x1B[31m") + std::string("\r[") + ((std::to_string(countComputeCompute).size() < 3) ? std::string(3 - std::to_string(countComputeCompute).size(), ' ') + std::to_string(countComputeCompute) : std::to_string(countComputeCompute)) + "/255|" + ((std::to_string(countCompute).size() < 3) ? std::string(3 - std::to_string(countCompute).size(), ' ') + std::to_string(countCompute) : std::to_string(countCompute)) + "/" + std::to_string(input_size - 1) + "] Computing " + std::string(1, c) + " ... done!" + (res2 ? " (found)" : "") + "\x1B[0m") << std::endl;
           countCompute++;
           fflush(stdout);
           lk.unlock();
