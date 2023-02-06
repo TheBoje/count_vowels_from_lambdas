@@ -15,10 +15,7 @@
 std::mutex m, m2;
 std::condition_variable cv, cv2;
 bool ready = false, ready2 = false;
-int input_size = 0;
-int count = 0;
-int countCompute = 0;
-int countComputeCompute = 0;
+int input_size = 0, count = 0, countCompute = 0, countComputeCompute = 0;
 
 int main(int argc, char** argv){
   std::string input;
@@ -40,7 +37,6 @@ int main(int argc, char** argv){
           char c = input[index];
           std::vector<std::thread> localThreads(0);
           std::vector<char> chars = {'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'};
-
           bool res2 = false;
           for (int i = 0; i < 255; i++) {
           auto t = std::thread([=] (char from, char target, std::vector<char> chars, bool* value) {
