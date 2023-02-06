@@ -14,20 +14,23 @@
 
 std::mutex m, m2;
 std::condition_variable cv, cv2;
-bool ready = false, ready2 = false;
-int input_size = 0, count = 0, countCompute = 0, countComputeCompute = 0;
+bool ready, ready2;
+int input_size, count, countCompute, countComputeCompute;
 
 int main(int argc, char** argv){
   std::string input;
   for (int i = 1; i < argc; i++) {
     input += std::string(argv[i]) + ' ';
   }
+  input.pop_back();
   input_size = input.size();
+  countCompute = 0;
   std::cout << input << std::endl;
   auto l = [=] (std::string input) {
     auto rd = std::random_device {}; 
     auto rng = std::default_random_engine { rd() };
     std::shuffle(std::begin(input), std::end(input), rng);
+    ready = false;
     std::vector<std::thread> threads(0);
     for (int i = 0; i < input.size(); i++) {
       auto t = std::thread([=](std::string input, int index, int* res){
@@ -35,6 +38,7 @@ int main(int argc, char** argv){
           cv.wait(lk, []{return ready;});
           countComputeCompute = 0;
           char c = input[index];
+          ready2 = false;
           std::vector<std::thread> localThreads(0);
           std::vector<char> chars = {'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'};
           bool res2 = false;
